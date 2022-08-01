@@ -47,27 +47,34 @@ $ npm install
 ```
 
 ## How to use
+### First steps
 - The project will receive the matrix that represents the room in a .txt file
-- The said .txt must contain only 1 and 0 as values representing the walls and empty spaces respectively to form the array, as shown below
+- The said .txt must contain only 1 and 0 as values representing the walls and empty spaces respectively to form the array, as shown below:
 
-![Captura de pantalla de 2022-08-01 17-54-54](https://user-images.githubusercontent.com/75711359/182258992-e3708f94-9d55-4ec4-84a4-c60d3bda465c.png)
-
-- That represents a 4x6 matrix with its walls
-- Later to load said .txt to our project we will use the "resources" directory as shown below
+```bash
+# This represents a 4x6 matrix with its walls
+101000
+001011
+100000
+111100
+```
+- Later to load said .txt to our project we will use the "resources" directory as shown below:
 
 ![Captura de pantalla de 2022-08-01 18-03-15](https://user-images.githubusercontent.com/75711359/182259779-356fc89e-acd4-451e-aa0c-685625f6ea6b.png)
 
 - We can use all the .txt files that we want as long as they are in that directory
 
+### Program in operation
+- When starting the program we will be shown a menu in which the available .txt files will appear
+
+![Captura de pantalla de 2022-08-01 18-20-25](https://user-images.githubusercontent.com/75711359/182261227-f0329652-94b5-4578-aeea-9690f8c7d0d6.png)
+
+- Then we will simply type the option we want and the program will do the rest, indicating the optimal number of bulbs to illuminate
+
+![Captura de pantalla de 2022-08-01 18-23-18](https://user-images.githubusercontent.com/75711359/182261533-858878ca-710a-4685-85cb-77f0d6ae3f67.png)
+
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
