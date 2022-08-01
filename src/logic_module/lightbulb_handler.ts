@@ -1,9 +1,19 @@
+/**
+ * @module app
+ * @author David Escalante <davideeangarita@gmail.com>
+ */
+
 const VOID_BOX = '⬜',
   lit_BOX = '🔸',
   WALL = '🧱',
   LIGHTBULB = '💡';
 let table = [];
 
+/**
+ * Start the process, it will look for a {@link VOID_BOX void box} in the array
+ * change its value to {@link lit_BOX lit box}
+ * @param constructed_table 'Is optional' as it will only be used in the first iteration after the table is created
+ */
 export const init_process_step_one = (constructed_table?: string[]): void => {
   //when the table has been created we assign that value to our local variable
   if (constructed_table) table = constructed_table;
@@ -32,6 +42,13 @@ export const init_process_step_one = (constructed_table?: string[]): void => {
   }
 };
 
+/**
+ * Will search clockwise around the given coordinates for a {@link VOID_BOX void box} to put
+ * the first {@link LIGHTBULB lightbulb}
+ * @param lit_row The initial {@link lit_BOX lit box} row set by {@link init_process_step_one()}
+ * @param lit_column The initial lit box column set by {@link init_process_step_one()}
+ * @returns the coordinates of the first lightbulb
+ */
 const init_process_step_two = (
   lit_row: number,
   lit_column: number,
@@ -60,6 +77,15 @@ const init_process_step_two = (
   return lightbulb_coords;
 };
 
+/**
+ * It moves through the {@link lit_BOX lit boxes} belonging to the coordinates of a
+ * given {@link LIGHTBULB lightbulb} calling {@link seach_void_boxes()} to obtain the
+ * position of a new lightbulb, in case this is the same position as the
+ * previous lightbulb, it means that the displacement path must be changed,
+ * so start the process again with {@link init_process_step_one()}
+ * @param  previous_ligthbulb_coords Coordinates of the  lightbulb previously placed
+ * @param step It can be `1` or `2`. The process to determine new bulbs is done by alternating two steps, this value becomes important in {@link seach_void_boxes()}
+ */
 const determine_next_ligthbulb = (
   previous_ligthbulb_coords: number[],
   step: number,
@@ -117,6 +143,16 @@ const determine_next_ligthbulb = (
   } else init_process_step_one();
 };
 
+/**
+ * will search in clockwise around the coordinates by a {@link VOID_BOX  void box}, however it will
+ * depend on the step indicated (1 or 2)
+ *`step = 1`: The {@link LIGHTBULB lightbulb} will be moved to the {@link lit_BOX lit box} next to the void box found.
+ *`step = 2`: A new lightbulb will be placed in the  void box found
+ * @param lit_box_coords lit box coordinates reference to find void boxes around
+ * @param old_lightbulb_coords Coordinates of the lightbulb previously played
+ * @param step It can be `1` or `2`.
+ * @returns An object with information about the next move in the process
+ */
 const seach_void_boxes = (
   lit_box_coords: number[],
   old_lightbulb_coords: number[],
@@ -178,6 +214,13 @@ const seach_void_boxes = (
   };
 };
 
+/**
+ * Will assign to the boxes of the table different values ​​
+ * ( {@link VOID_BOX void box} or {@link lit_BOX lit box}) depending on whether
+ * the {@link LIGHTBULB lightbulb} is going to be turned on or off
+ * @param ligthbulb_coords Coordinates of the lightbulb in question
+ * @param on It can be `true` or `false`, it indicates if we will turn on or off the lightbulb
+ */
 const turn_lights_on_or_off = (
   ligthbulb_coords: number[],
   on: boolean,
@@ -231,6 +274,9 @@ const turn_lights_on_or_off = (
   }
 };
 
+/**
+ * Print the table by console
+ */
 const view_table = (): void => {
   console.log('\n');
   table.forEach((row: string[]) => {
@@ -240,6 +286,10 @@ const view_table = (): void => {
   });
 };
 
+/**
+ * It will go through the table in search of all the {@link LIGHTBULB lightbulbs}
+ * to give their number by console
+ */
 const count_lightbulbs = (): void => {
   let count = 0;
   for (let row = 0; row < table.length; row++) {
