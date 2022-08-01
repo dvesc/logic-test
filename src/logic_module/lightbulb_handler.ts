@@ -2,7 +2,7 @@ const VOID_BOX = '⬜',
   lit_BOX = '🔸',
   WALL = '🧱',
   LIGHTBULB = '💡';
-const table = [];
+let table = [];
 
 export const init_process_step_one = (constructed_table?: string[]): void => {
   //when the table has been created we assign that value to our local variable
@@ -229,4 +229,25 @@ const turn_lights_on_or_off = (
       }
     }
   }
+};
+
+const view_table = (): void => {
+  console.log('\n');
+  table.forEach((row: string[]) => {
+    let actual_row = '';
+    row.forEach((colunm) => (actual_row = actual_row + colunm));
+    console.log(actual_row);
+  });
+};
+
+const count_lightbulbs = (): void => {
+  let count = 0;
+  for (let row = 0; row < table.length; row++) {
+    for (let column = 0; column < table[row].length; column++) {
+      if (table[row][column] == LIGHTBULB) {
+        count += 1;
+      }
+    }
+  }
+  console.log('\nNumero minimo de bombillos necesarios: ' + count);
 };
