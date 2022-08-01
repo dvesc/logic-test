@@ -28,11 +28,36 @@
 
 This project tries to solve the logic problem posed for the distribution of light bulbs, whose statement says the following:
 
+![Captura de pantalla de 2022-08-01 17-35-54](https://user-images.githubusercontent.com/75711359/182257182-5b7d0c38-294e-4c15-80c9-9d05f954edba.png)
+
+In this way the project manages to solve this problem by illuminating a matrix in its entirety and showing the result in the console as follows:
+
+![Captura de pantalla de 2022-08-01 17-43-04](https://user-images.githubusercontent.com/75711359/182257888-f8877860-df1a-44fd-8ee9-175b0492f54c.png)
+
+Where:
+- 🔸 Symbolizes the illumination of the light bulb
+- 💡 The position of the bulbs
+- 🧱 Represent the walls of the room
+
+
 ## Installation
 
 ```bash
 $ npm install
 ```
+
+## How to use
+- The project will receive the matrix that represents the room in a .txt file
+- The said .txt must contain only 1 and 0 as values representing the walls and empty spaces respectively to form the array, as shown below
+
+![Captura de pantalla de 2022-08-01 17-54-54](https://user-images.githubusercontent.com/75711359/182258992-e3708f94-9d55-4ec4-84a4-c60d3bda465c.png)
+
+- That represents a 4x6 matrix with its walls
+- Later to load said .txt to our project we will use the "resources" directory as shown below
+
+![Captura de pantalla de 2022-08-01 18-03-15](https://user-images.githubusercontent.com/75711359/182259779-356fc89e-acd4-451e-aa0c-685625f6ea6b.png)
+
+- We can use all the .txt files that we want as long as they are in that directory
 
 ## Running the app
 
