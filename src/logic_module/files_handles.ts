@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-//import { init_process_step_one } from './lightbulb_handler';
+import { init_process_step_one } from './lightbulb_handler';
 
 const readline = require('readline-sync');
 const FS = require('fs'),
@@ -70,5 +70,6 @@ const build_table = (file_name: string): void => {
         TABLE[i][j] = elem == '0' ? VOID_BOX : WALL;
       }
     }
+    init_process_step_one(TABLE);
   });
 };
