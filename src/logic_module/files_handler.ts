@@ -35,12 +35,12 @@ export const show_options = async (): Promise<string | undefined> => {
   });
 
   while (!flag) {
-    console.log('----ARCHIVOS .TXT DISPONIBLES----');
+    console.log('\n----ARCHIVOS .TXT DISPONIBLES----');
     if (TXT_FILES.length != 0) {
       TXT_FILES.forEach((file, index) => {
         console.log(`${index + 1}- ${file}`);
       });
-      input = readline.question('Digite la opcion que desea procesar: ');
+      input = readline.question('\nDigite la opcion que desea procesar: ');
 
       //if option enters the range
       if (/^-?\d+$/.test(input)) {
