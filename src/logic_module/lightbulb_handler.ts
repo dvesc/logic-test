@@ -3,6 +3,8 @@
  * @author David Escalante <davideeangarita@gmail.com>
  */
 
+import { back_to_menu } from './files_handler';
+
 const VOID_BOX = '⬜',
   lit_BOX = '🔸',
   WALL = '🧱',
@@ -300,4 +302,5 @@ const count_lightbulbs = (): void => {
     }
   }
   console.log('\nNumero minimo de bombillos necesarios: ' + count);
+  back_to_menu();
 };

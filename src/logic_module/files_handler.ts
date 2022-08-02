@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+
 import { init_process_step_one } from './lightbulb_handler';
 
 const readline = require('readline-sync');
 const FS = require('fs'),
   VOID_BOX = '⬜',
-  WALL = '🧱',
-  TABLE = [];
+  WALL = '🧱';
 
 /**
  * start the program by console
@@ -74,10 +74,14 @@ export const show_options = async (): Promise<string | undefined> => {
  */
 const build_table = (file_name: string): void => {
   FS.readFile(`./src/resources/${file_name}`, 'utf-8', (err, data: string) => {
-    const BINARI_TABLE: string[] = data.split('\n');
+    const TABLE = [],
+      BINARI_TABLE: string[] = data.split('\n');
     //rows
     for (let i = 0; i < BINARI_TABLE.length; i++) {
-      const COLUMNS: string[] = BINARI_TABLE[i].split('');
+      const COLUMNS: string[] = BINARI_TABLE[i]
+        .split('')
+        .filter((elem) => /1|0/.test(elem)); //we remove any character that is not 1 and 0
+
       TABLE[i] = []; //that element will be an array
       //columns
       for (let j = 0; j < COLUMNS.length; j++) {
@@ -87,4 +91,11 @@ const build_table = (file_name: string): void => {
     }
     init_process_step_one(TABLE);
   });
+};
+
+/**
+ * we restart the program
+ */
+export const back_to_menu = (): void => {
+  init_process();
 };
